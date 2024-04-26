@@ -1,0 +1,40 @@
+<!DOCTYPE html> <!-- Declaración del tipo de documento HTML -->
+<html>
+<head>
+    <title>Tareas por hacer</title> <!-- Título de la página web -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}"> <!-- Enlace al archivo CSS para los estilos de la página -->
+    <script>
+        function editarTarea(id, tarea) { // Función JavaScript para editar una tarea
+            var nuevaTarea = prompt("Editar Tarea", tarea); // Muestra un cuadro de diálogo para editar la tarea
+            if (nuevaTarea != null) { // Si el usuario introduce una nueva tarea
+                document.getElementById('tarea' + id).value = nuevaTarea; // Actualiza el valor de la tarea
+                document.getElementById('form' + id).submit(); // Envía el formulario con la tarea actualizada
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="container"> <!-- Contenedor principal de la página -->
+        <h1>Tareas por hacer</h1> <!-- Título de la página -->
+        <form method="POST" action="/agregar"> <!-- Formulario para agregar una nueva tarea -->
+            <input type="text" name="tarea" required> <!-- Campo de entrada para la nueva tarea -->
+            <input type="submit" value="Agregar Tarea" class="btn"> <!-- Botón para enviar el formulario y agregar la tarea -->
+        </form>
+<ul>
+    {% for id, tarea in enumerate(tareas) %} <!-- Bucle para mostrar todas las tareas -->
+    <li class="{{ 'completada' if tarea.completada else 'pendiente' }}"> <!-- Clase CSS dependiendo de si la tarea está completada o pendiente -->
+        <span class="tarea">{{ tarea.nombre }}</span> <!-- Nombre de la tarea -->
+        <div class="botones"> <!-- Contenedor para los botones de edición -->
+            <form id="form{{id}}" method="POST" action="{{ url_for('editar', id=id) }}"> <!-- Formulario para editar la tarea -->
+                <input id="tarea{{id}}" type="hidden" name="tarea" value="{{ tarea.nombre }}" required> <!-- Campo oculto con el nombre de la tarea -->
+            </form>
+            <button onclick="editarTarea({{id}}, '{{ tarea.nombre }}')" class="btn">Editar Tarea</button> <!-- Botón para editar la tarea -->
+            <a href="{{ url_for('completar', id=id) }}" class="btn">Completar</a> <!-- Botón para marcar la tarea como completada -->
+            <a href="{{ url_for('borrar', id=id) }}" class="btn">Borrar</a> <!-- Botón para borrar la tarea -->
+        </div>
+    </li>
+    {% endfor %}
+</ul>
+    </div>
+</body>
+</html>

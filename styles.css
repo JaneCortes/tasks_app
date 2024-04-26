@@ -1,0 +1,104 @@
+/* Establece la fuente, margen, relleno y color de fondo para todo el cuerpo del documento */
+body {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f0f0;
+}
+
+/* Establece el ancho y el margen automático para el contenedor principal */
+.container {
+    width: 80%;
+    margin: 0 auto;
+}
+
+/* Establece el tamaño de fuente, color, alineación de texto y relleno para los encabezados h1 */
+h1 {
+    font-size: 50px; 
+    color: #1f5561;
+    text-align: center;
+    padding: 40px 0;
+}
+
+/* Establece la visualización y justificación del contenido para los formularios */
+form {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+/* Establece el flex, relleno y margen derecho para los campos de texto de los formularios */
+form input[type="text"] {
+    flex: 1;
+    padding: 10px;
+    margin-right: 10px;
+}
+
+/* Establece el relleno, color de fondo, color de texto y borde para los botones de envío de los formularios */
+form input[type="submit"] {
+    padding: 10px 20px;
+    background-color: #445A67;
+    color: rgb(255, 255, 255);
+    border: none;
+}
+
+/* Elimina el estilo de lista y el relleno para las listas desordenadas */
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+/* Establece el color de fondo, relleno, margen inferior, radio de borde y posición para los elementos de la lista */
+li {
+    background-color: #fff;
+    padding: 20px;
+    margin-bottom: 10px;
+    border-radius: 4px;
+    position: relative;
+}
+
+/* Establece la visualización, posición derecha, posición inferior, decoración de texto y margen derecho para los enlaces dentro de los elementos de la lista */
+li a {
+    display: block;
+    right: 20px;
+    bottom: 20px;
+    text-decoration: none;
+    margin-right: 10px; /* Añade un margen a la derecha */
+}
+
+/* Nuevas clases para tareas completadas y pendientes */
+.completada {
+    background-color: #b4c9c7;
+}
+
+.pendiente {
+    background-color: #f3bfb3;
+}
+
+/* Nueva clase para el nombre de la tarea */
+.tarea {
+    font-size: 35px; 
+}
+
+/* Nueva clase para los botones */
+.botones {
+    display: flex;
+    justify-content: flex-end;
+    overflow: auto; 
+}
+
+/* Establece el relleno, color de fondo, color de texto, borde, margen derecho, transición y radio de borde para los botones */
+.btn {
+    padding: 5px 10px;
+    background-color: #445A67;
+    color: rgb(255, 255, 255);
+    border: none;
+    margin-right: 10px; /* Añade un margen a la derecha */
+    transition: background-color 0.3s ease; /* Añade una transición suave al cambiar el color de fondo */
+    border-radius: 6px;
+}
+
+/* Cambia el color de fondo de los botones al pasar el mouse */
+.btn:hover {
+    background-color: #57838D; /* Cambia el color de fondo al pasar el mouse */
+}
